@@ -1,4 +1,4 @@
-To get started, install virtualenv on your machine. 
+Group Members, to get started: 
 
 # 1. Setup the PIP package manager:
 ```
