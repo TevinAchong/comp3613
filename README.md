@@ -20,7 +20,7 @@ virtualenv venv
 ```
 source venv/bin/activate
 ```
-## Windows:
+## Windows (bleh):
 ```
 venv\Scripts\activate
 ```
