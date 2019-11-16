@@ -44,4 +44,4 @@ def get_data(search, date, amount):
     print(array[4])
 
 if __name__ == '__main__':
-    get_data('Digicel', '01-02-2019', 100)
+    get_data('Manchester United', '01-02-2019', 100)
