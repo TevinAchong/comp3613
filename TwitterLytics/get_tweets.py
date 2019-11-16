@@ -42,7 +42,6 @@ def get_data(search, date, amount):
     print(contents[0])
     array = str(contents[1], 'utf-8').split(',')
     print(array[4])
-    #for line in file_csv.readlines():
-#        array = line.split(',')
-#        tweet = array[4]
-#        print(tweet)
+
+if __name__ == '__main__':
+    get_data('Digicel', '01-02-2019', 100)
