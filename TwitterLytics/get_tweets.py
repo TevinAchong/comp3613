@@ -24,24 +24,34 @@ def get_data(search, date, amount):
     tweets = tweepy.Cursor(api.search, 
                             q=search_wrd,
                             lang="en",
-                            since_id=date_since).items(int(amount))
+                            since_id=date_since,
+                            tweet_mode='extended').items(int(amount))
 
-    #placing only the imporatant information into a table
-    users_locs = [[c,tweet.user.id,tweet.user.screen_name, tweet.user.location,tweet.text] for c ,tweet in enumerate(tweets,1)]
+    # Storing all the tweets in an array
+    tw = []
+    for t in tweets:
+        tw.append(t)
+    # Dump all the tweets into a JSON file
+    
+    print(tw[0]._json['full_text'])
+
+    # #placing only the imporatant information into a table
+    # users_locs = [[c,tweet.user.id,tweet.user.screen_name, tweet.user.location,tweet.text] for c ,tweet in enumerate(tweets,1)]
 
 
-    #place the users_loc into a dataframe so it can be transferred to a csv file
-    tweet_text = pandas.DataFrame(data=users_locs, 
-                        columns=['id','user_id','user', "location","text"])
+    # #place the users_loc into a dataframe so it can be transferred to a csv file
+    # tweet_text = pandas.DataFrame(data=users_locs, 
+    #                     columns=['id','user_id','user', "location","text"])
 
-    tweet_text.to_csv('data.csv',index=None)
+    # tweet_text.to_csv('data.csv',index=None)
 
-    file_csv = open('data.csv', 'rb')
-    contents = file_csv.readlines()
-    #array = str(contents, 'utf-8').split(',')
-    print(contents[0])
-    array = str(contents[1], 'utf-8').split(',')
-    print(array[4])
+    # file_csv = open('data.csv', 'rb')
+    # contents = file_csv.readlines()
+    # #array = str(contents, 'utf-8').split(',')
+    # print(contents[0])
+    # array = str(contents[1], 'utf-8').split(',')
+    # print(array[4])
+
 
 if __name__ == '__main__':
-    get_data('Manchester United', '01-02-2019', 100)
+    get_data('trap lore ross', '01-02-2019', 100)
