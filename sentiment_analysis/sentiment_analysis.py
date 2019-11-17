@@ -4,7 +4,7 @@ import json
 # Globally declaring the analyzer
 analyser = SentimentIntensityAnalyzer()
 
-def tweet_polarity_scores(tweet):
+def tweet_sentiment_classifier(tweet):
     '''
     Input: a tweet in the form of a string
     Output: polarity scores for that tweet indicating positive, negative, and neutral
