@@ -16,8 +16,7 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-def retrieve_tweets_store_in_json(search, date, amount):
-
+def retrieve_tweets_store_in_json(search, date, amount, json_file):
     search_wrd = search + "-filter:retweets"
     date_since = date
 
@@ -29,10 +28,8 @@ def retrieve_tweets_store_in_json(search, date, amount):
                             tweet_mode='extended').items(int(amount))
 
     # Dump all the tweets into JSON format
-    with open('../tweets.txt', 'w') as outfile:
-        for t in tweets:
-            print("WE HERE")
-            json.dump(t._json, outfile)
-
-# if __name__ == '__main__':
-#     get_data('spotify', '01-02-2019', 100)
+    tweets_arr = []
+    for t in tweets:
+        tweets_arr.append(t._json)
+    with open(json_file, 'w') as outfile:
+        json.dump(tweets_arr, outfile)
