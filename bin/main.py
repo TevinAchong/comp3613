@@ -7,7 +7,7 @@ from sentiment_analysis.sentiment_analysis import tweet_sentiment_classifier
 from tweet_capture.get_tweets import retrieve_tweets_store_in_json
 import json
 import argparse
-import preprocessor as p
+
 
 def main(args_in):
     # Command line arguments
@@ -49,14 +49,16 @@ def main(args_in):
             tweet['sentiment_score'] = tweet_sentiment_classifier(tweet['full_text'])
             results.append(tweet)
             sentiments.append(tweet['sentiment_score'])
-            texts.append(p.clean(tweet['full_text']))
-            locations.append(p.clean(tweet['user']['location'])) 
+            texts.append(tweet['full_text'])
+            locations.append(tweet['user']['location']) 
             
     # Storing the tweets and their sentiments in a file
     with open(options.analysis_storage_file, 'w') as analysis_file:
         json.dump(results, analysis_file)
     
     print(str(sentiments) + "|||" + str(texts)+ "|||" + str(locations))
+    
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))
