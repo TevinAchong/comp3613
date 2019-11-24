@@ -33,3 +33,4 @@ def retrieve_tweets_store_in_json(search, date, amount, json_file):
         tweets_arr.append(t._json)
     with open(json_file, 'w') as outfile:
         json.dump(tweets_arr, outfile)
+    
