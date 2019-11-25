@@ -108,6 +108,7 @@
             }]
         });
         
+        // WORD CLOUD
         var lines = locations.split(/[,\. ]+/g),
         data = Highcharts.reduce(lines, function (arr, word) {
             var obj = Highcharts.find(arr, function (obj) {
@@ -129,10 +130,14 @@
             series: [{
                 type: 'wordcloud',
                 data: data,
+                minFontSize: 7,
+                style: {
+                    fontFamily: 'Arial',
+                },
                 name: 'Occurrences'
             }],
             title: {
-                text: 'Wordcloud'
+                text: 'Where the Tweeters are from'
             }
         });
     </script>

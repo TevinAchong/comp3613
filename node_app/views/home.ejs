@@ -5,16 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/home.css">
+    <%include partials/materialize.ejs %>
     <title><%=title%></title>
 </head>
 <body>
-    <h1><%=title%></h1>
 
-    <form method="POST" action="/stat">
-        <input type="text" name="company_name" required/>
-        <input type="date", name="search_date_since" required>
-        <input type="submit" />
-    </form>
+    <nav>
+        <div class="nav-wrapper blue lighten-2">
+          <a href="#" class="brand-logo center">  <i class="large material-icons">pie_chart</i></a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="#">TwitterLytics</a></li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <form method="POST" action="/stat" class="col s12">
+            <div class="container">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">business</i>
+                    <input id="company_name" type="text" class="validate" name="company_name" required/>
+                    <label for="company_name">Enter Company Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">date_range</i>
+                    <input id="search_date_since" type="text" class="datepicker" name="search_date_since" required/>
+                    <label for="search_date_since">Results for Tweets Since...</label>
+                </div>
+                <div class="center-align col s12">
+                    <button class="btn waves-effect waves-light pulse blue lighten-2" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <script src="js/home.js"></script>
 </body>
