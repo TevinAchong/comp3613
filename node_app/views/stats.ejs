@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/home.css">
+    <%include partials/materialize.ejs%>
     <title><%=title%></title>
 </head>
 <body>
+    <%include partials/nav.ejs%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -34,20 +51,13 @@
         var sentiments = tweets[0];
         var texts = tweets[1];
         var locations = tweets[2];
-        //console.log(typeof(locations[0]));
 
-        for(var i = 0; i<texts.length; i++){
-            texts[i] = texts[i].replace('&#39', '\'');
-        }
-        
-        for(var i = 0; i<locations.length; i++){
-            locations[i] = locations[i].replace('&#39', '\'');
-        }
-
+        // Getting rid of &#39 which actually represents apostrophe
+        texts = texts.replace(/&#39;/g, "'");
+        locations = locations.replace(/&#39;/g, "'");
+    
         var date_since = "<%=date%>";
         var company_name = "<%=company_name%>"
-
-        //console.log(locations);
         
         sentiments = sentiments.substring(1, sentiments.length-1)
         sentiments = sentiments.split(",");
@@ -66,9 +76,7 @@
         neu = neu/stats.length * 100;
         neg = neg/stats.length * 100;
 
-
-        //console.log(texts);
-
+        //########## Pie Chart #############
         Highcharts.chart('container', {
             chart: {
                 plotBackgroundColor: null,
@@ -140,6 +148,9 @@
                 text: 'Where the Tweeters are from'
             }
         });
+
+        // Displaying random tweets
+        console.log(texts.length);
     </script>
 
 </body>
