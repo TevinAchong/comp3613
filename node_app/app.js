@@ -25,16 +25,14 @@ app.post('/stat', (req, res) => {
     
     var python, slash;
     if (process.platform === 'win32' || process.platform === 'win64') {
-        python = 'python'; 
-        slash = '\\';  
+        command = `python ..\\bin\main.py --company-name "${company_name}" --search-date-since "${search_date_since}"`;
     }
     else {
-        python = 'python3'; 
-        slash = '/';   
+        command = `python3 ../bin/main.py --company-name "${company_name}" --search-date-since "${search_date_since}"`;   
     }
     exec(
         // Running the python script via a shell/terminal command to pull the tweets
-        `${python} ..${slash}bin${slash}main.py --company-name "${company_name}" --search-date-since "${search_date_since}"`, 
+        command, 
         (err, stdout, stderr) => {
         if (err) {
             console.error(err)
