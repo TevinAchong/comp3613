@@ -25,7 +25,7 @@ app.post('/stat', (req, res) => {
     
     var python, slash;
     if (process.platform === 'win32' || process.platform === 'win64') {
-        command = `python ..\\bin\main.py --company-name "${company_name}" --search-date-since "${search_date_since}"`;
+        command = `python ..\\bin\\main.py --company-name "${company_name}" --search-date-since "${search_date_since}"`;
     }
     else {
         command = `python3 ../bin/main.py --company-name "${company_name}" --search-date-since "${search_date_since}"`;   
