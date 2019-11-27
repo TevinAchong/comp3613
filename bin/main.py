@@ -15,7 +15,7 @@ def main(args_in):
 
     parser.add_argument("--company-name", dest="company_name", default="United Airlines",
                         help="Name of the company to search twitter for", required=True)
-    parser.add_argument("--num-tweets", dest="num_tweets", default=200,
+    parser.add_argument("--num-tweets", dest="num_tweets", default=50,
                         help="The amount of tweets to capture from twitter")
     parser.add_argument("--tweet-storage-file", dest="tweet_storage_file", default="../data/tweets.txt",
                         help="The path to the file which will hold the retrieved tweets")
